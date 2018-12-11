@@ -12,12 +12,15 @@ import { ListComponent } from './components/list/list.component';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 
-import { IssueService } from './issue.service';
+import { IssueService } from './service/issue.service';
+import { RiotService } from './service/riot.service';
+import { GameDetailComponent } from './components/game-detail/game-detail.component';
 
 const routes: Routes = [
   { path: 'create', component: CreateComponent},
   { path: 'edit/:id', component: EditComponent},
   { path: 'list', component: ListComponent},
+  { path: 'game/:id', component: GameDetailComponent},
   { path: '', redirectTo: 'list', pathMatch: 'full'}
 ];
 
@@ -26,7 +29,8 @@ const routes: Routes = [
     AppComponent,
     ListComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    GameDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,7 @@ const routes: Routes = [
     MatDividerModule,
     MatSnackBarModule
   ],
-  providers: [IssueService],
+  providers: [IssueService,RiotService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,8 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { MatSnackBar } from '@angular/material';
 
-import { IssueService } from '../../issue.service';
-import { Issue } from '../../issue.model';
+import { IssueService } from '../../service/issue.service';
+import { Issue } from '../../model/issue.model';
 
 @Component({
   selector: 'app-edit',
