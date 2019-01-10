@@ -38,7 +38,7 @@ export class GameDetailComponent implements OnInit {
             this.blueTeam.totalDamage += participant.stats.totalDamageDealtToChampions;
           } else {
             this.redTeam.participants.push(participant);
-            this.blueTeam.totalDamage += participant.stats.totalDamageDealtToChampions;
+            this.redTeam.totalDamage += participant.stats.totalDamageDealtToChampions;
           }
         });
         console.log('GAME');
@@ -50,4 +50,10 @@ export class GameDetailComponent implements OnInit {
     });
   }
 
+  totalDamage(participant){
+    return Math.round(participant.stats.totalDamageDealtToChampions * 100 / this.blueTeam.totalDamage);
+  }
+
 }
+
+

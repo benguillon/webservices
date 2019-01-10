@@ -9,7 +9,7 @@ import { champions } from '../model/champions.model';
 export class RiotService {
 
   uri = 'https://euw1.api.riotgames.com/lol';
-  key = 'RGAPI-c98020b9-0cbc-45d5-97f0-c5aecfdda44d';
+  key = 'RGAPI-b64d17d2-39ca-4eb2-ac69-d45d1d216b1d';
 
   constructor(private http: HttpClient) { }
 

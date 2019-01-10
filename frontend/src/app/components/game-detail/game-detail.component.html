@@ -15,7 +15,7 @@
     <td>{{riotService.getChampionById(participant.championId)}} </td>
     <td>{{riotService.getChampionById(participant.championId)}} </td>
     <td>{{participant.stats.kills}}/{{participant.stats.deaths}}/{{participant.stats.assists}}</td>
-    <td>{{participant.stats.totalDamageDealtToChampions}} ({{participant.stats.totalDamageDealtToChampions * 100 / this.blueTeam.totalDamage}})</td>
+    <td>{{participant.stats.totalDamageDealtToChampions}} ({{totalDamage(participant)}}%)</td>
     <td>{{participant.stats.totalMinionsKilled + participant.stats.neutralMinionsKilled}} </td>
     <td>{{participant.stats.goldEarned}} </td>
   </tr>
@@ -24,14 +24,22 @@
 <h3>RED TEAM</h3>
 <br>
 <table class="customers">
-    <tr>
-      <th>Champion</th>
-      <th>KDA</th>
-      <th>Dégâts</th>
-    </tr>
-    <tr *ngFor="let participant of this.redTeam.participants; let i = index">
-      <td>{{riotService.getChampionById(participant.championId)}} </td>
-      <td>{{participant.stats.kills}}/{{participant.stats.deaths}}/{{participant.stats.assists}}</td>
-      <td>{{participant.stats.totalDamageDealtToChampions}}</td>
-    </tr>
-  </table>
+  <tr>
+    <th>Champion</th>
+    <th>Summoner Name</th>
+    <th>Rang</th>
+    <th>KDA</th>
+    <th>Dégâts</th>
+    <th>CS</th>
+    <th>Gold</th>
+  </tr>
+  <tr *ngFor="let participant of this.redTeam.participants; let i = index">
+    <td>{{riotService.getChampionById(participant.championId)}} </td>
+    <td>{{riotService.getChampionById(participant.championId)}} </td>
+    <td>{{riotService.getChampionById(participant.championId)}} </td>
+    <td>{{participant.stats.kills}}/{{participant.stats.deaths}}/{{participant.stats.assists}}</td>
+    <td>{{participant.stats.totalDamageDealtToChampions}} ({{totalDamage(participant)}}%)</td>
+    <td>{{participant.stats.totalMinionsKilled + participant.stats.neutralMinionsKilled}} </td>
+    <td>{{participant.stats.goldEarned}} </td>
+  </tr>
+</table>

@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
 import Issue from './models/Issue';
+import User from './models/User';
 
 const app = express();
 const router = express.Router();
@@ -27,6 +28,7 @@ router.route('/issues').get((req, res) => {
             res.json(issues);
     });
 });
+
 
 router.route('/issues/:id').get((req, res) => {
     Issue.findById(req.params.id, (err, issue) => {
@@ -66,6 +68,42 @@ router.route('/issues/update/:id').post((req, res) => {
             });
         }
     });
+});
+
+router.route('/users/authenticate').post((req, res) => {
+    console.log("ici debut");
+    console.log(req.body.username);
+    console.log(req.body.password);
+
+    
+    
+    // if (User.find({username: req.username, password: req.password})) {
+    //     // if login details are valid return 200 OK with a fake jwt token
+    //     let body = {
+    //         username: req.username,
+    //         password: req.password,
+    //         token: 'fake-jwt-token'
+    //     };
+    //     res.json({status: 200, body});
+    // } else {
+    //     // else return 400 bad request
+    //     console.log("ici");
+    //     res.status(400).send('Username or password is incorrect.');
+    // }
+
+    User.findOne({username: req.body.username, password: req.body.password}, function(err, user) {
+        if (err) { return next(err) }
+        let body = {
+            username: req.body.username,
+            password: req.body.password,
+            token: 'fake-jwt-token'
+        };
+        if (!user) {
+            res.status(400).send('Username or password is incorrect');
+        } else {
+            res.json({status: 200, user});
+        }
+      })
 });
 
 router.route('/issues/delete/:id').get((req, res) => {
